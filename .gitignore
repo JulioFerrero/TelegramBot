@@ -28,4 +28,5 @@ hs_err_pid*
 # Secret
 DB/
 Chats/
+secret.java
 
