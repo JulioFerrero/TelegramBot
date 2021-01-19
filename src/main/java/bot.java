@@ -2,6 +2,8 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.FileNotFoundException;
+
 public class bot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
@@ -17,7 +19,11 @@ public class bot extends TelegramLongPollingBot {
                 ChatSaver.getUpdate(update);
                 ChatSaver.send();
             }
-        }catch (TelegramApiException e) {
+            if (new Checker().setUpdate(update).cat()){
+                execute(cat.sendPhoto(update));
+            }
+
+        }catch (TelegramApiException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }

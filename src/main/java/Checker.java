@@ -79,6 +79,11 @@ class Checker {
         return commandList.equals(mensajeLower);
     }
 
+    boolean cat() {
+        String command = "/cat";
+        return command.equals(update.getMessage().getText());
+    }
+
     boolean ChatSaver() {
         return update.getMessage().getText() != null;
     }
